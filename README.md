@@ -4,7 +4,7 @@
 
 - Review the test file in the plop template
 - Check if spaceBeforeBlockStatements rule really exists
-
+- Check devDependencies/dependencies for package.json
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
