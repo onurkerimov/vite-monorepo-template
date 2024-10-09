@@ -6,10 +6,27 @@ export default function (plop) {
       name: 'name',
       message: 'What is your component name?'
     }],
-    actions: [{
-      type: 'add',
-      path: 'apps/main/src/components/{{pascalCase name}}/{{pascalCase name}}.jsx',
-      templateFile: 'packages/plop-templates/Component.tsx.hbs'
-    }]
+    actions: [
+      {
+        type: 'add',
+        path: 'apps/main/src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
+        templateFile: 'packages/plop-templates/Component/Component.tsx.hbs'
+      },
+      {
+        type: 'add',
+        path: 'apps/main/src/components/{{pascalCase name}}/{{pascalCase name}}.module.css',
+        templateFile: 'packages/plop-templates/Component/Component.module.css.hbs'
+      },
+      {
+        type: 'add',
+        path: 'apps/main/src/components/{{pascalCase name}}/{{pascalCase name}}.test.tsx',
+        templateFile: 'packages/plop-templates/Component/Component.test.tsx.hbs'
+      },
+      {
+        type: 'add',
+        path: 'apps/main/src/components/{{pascalCase name}}/index.ts',
+        templateFile: 'packages/plop-templates/Component/Component.index.ts.hbs'
+      }
+    ]
   });
 };
