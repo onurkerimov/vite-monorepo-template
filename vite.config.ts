@@ -6,4 +6,7 @@ export default defineConfig({
   plugins: [react()],
   root: 'apps/main/src',
   publicDir: '../public',
+  test: {
+    environment: 'happy-dom',
+  },
 })
