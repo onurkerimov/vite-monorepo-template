@@ -9,19 +9,20 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "plop": "plop",
+    "plop": "plop --plopfile packages/plop-templates/plopfile.js",
     "build:packages": "vite build --config vite.library.config.ts"
   },
   "dependencies": {
+    "@manypkg/get-packages": "^2.2.2",
+    "@types/fs-extra": "^11.0.4",
+    "fs-extra": "^11.2.0",
     "glob": "^11.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "vite-plugin-dts": "^4.2.3"
+    "vite-plugin-dts": "^4.2.3",
+    "vite-plugin-lib-inject-css": "^2.1.1",
+    "vite-plugin-static-copy": "^2.0.0"
   },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "devDependencies": {
     "@eslint/js": "^9.11.1",
     "@types/react": "^18.3.10",
