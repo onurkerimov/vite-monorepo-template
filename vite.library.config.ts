@@ -11,7 +11,6 @@ import fse from 'fs-extra'
 
 const ROOT_DIR = process.cwd()
 const PACKAGES_DIR = 'packages'
-const TEMP_DIR = 'temp'
 
 const { packages } = getPackagesSync(ROOT_DIR)
 
@@ -31,6 +30,10 @@ const createLibConfig = (): UserConfig => {
 
   packages.forEach((pkg) => {
     const packageSrc = `${pkg.relativeDir}/src`
+
+    // Skip private packages
+    if (pkg.packageJson.private) return
+
     glob.sync(packageSrc + '/**/*.{ts,tsx}').map((file) => {
       const key = relative(
         PACKAGES_DIR,
@@ -93,7 +96,7 @@ const createLibConfig = (): UserConfig => {
 }
 
 const copyFiles = () => {
-  const sourceDir = join(ROOT_DIR, 'dist', TEMP_DIR)
+  const sourceDir = join(ROOT_DIR, 'dist/temp')
 
   // Function to copy files
   function traverse(src: string) {
@@ -106,7 +109,7 @@ const copyFiles = () => {
           fs.readdirSync(srcPath).forEach((file) => {
             const filePath = join(srcPath, file)
             const packageName = relative(
-              ROOT_DIR + '/dist/' + TEMP_DIR,
+              ROOT_DIR + '/dist/temp',
               srcPath,
             ).split('/')[0]
             const destinationFilePath = join(
